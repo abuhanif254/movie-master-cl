@@ -3,12 +3,13 @@ import Banner from '../components/Banner';
 import MovieCard from '../components/MovieCard';
 import { Link } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
-
 import { FaFilm, FaUserShield } from "react-icons/fa"; 
 
 const Home = () => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
+    
+    const [selectedGenre, setSelectedGenre] = useState(null);
 
     useEffect(() => {
         fetch('http://localhost:5000/movies')
@@ -17,12 +18,25 @@ const Home = () => {
                 setMovies(data);
                 setLoading(false);
             })
-            
             .catch(err => {
                 console.error(err);
                 setLoading(false);
             });
     }, []);
+
+   
+    const handleGenreClick = (genre) => {
+        if (selectedGenre === genre) {
+            setSelectedGenre(null); 
+        } else {
+            setSelectedGenre(genre); 
+        }
+    };
+
+    
+    const filteredMovies = selectedGenre 
+        ? movies.filter(movie => movie.genre === selectedGenre) 
+        : [];
 
     if (loading) return <LoadingSpinner />;
 
@@ -32,10 +46,57 @@ const Home = () => {
     
     const recentMovies = [...movies].reverse().slice(0, 6);
 
+    
+    const genres = ["Action", "Comedy", "Drama", "Horror", "Sci-Fi", "Thriller"];
+
     return (
         <div>
-            
+           
             <Banner />
+
+           
+            <div className='my-16 container mx-auto px-4' id="genre-section">
+                <h2 className='text-3xl font-bold text-center mb-2 border-l-4 border-accent pl-4 inline-block'>
+                    Browse by Genre
+                </h2>
+                <p className='text-center text-gray-500 mb-8'>Click on a genre to filter movies instantly</p>
+
+                
+                <div className="flex flex-wrap justify-center gap-4 mb-8">
+                    {
+                        genres.map((genre, idx) => (
+                            <button 
+                                key={idx} 
+                                onClick={() => handleGenreClick(genre)}
+                                className={`btn btn-outline px-8 ${selectedGenre === genre ? 'btn-active btn-primary text-white' : ''}`}
+                            >
+                                {genre}
+                            </button>
+                        ))
+                    }
+                </div>
+
+               
+                {
+                    selectedGenre && (
+                        <div className='bg-base-200 p-6 rounded-xl animate-fade-in'>
+                            <h3 className='text-2xl font-bold mb-4 text-primary'>
+                                {filteredMovies.length} Results for "{selectedGenre}"
+                            </h3>
+                            
+                            {filteredMovies.length > 0 ? (
+                                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                                    {filteredMovies.map(movie => <MovieCard key={movie._id} movie={movie} />)}
+                                </div>
+                            ) : (
+                                <div className='text-center py-10'>
+                                    <p className='text-xl text-gray-500'>No movies found in this genre.</p>
+                                </div>
+                            )}
+                        </div>
+                    )
+                }
+            </div>
 
             
             <div className='my-16'>
