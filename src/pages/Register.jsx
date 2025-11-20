@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../providers/AuthProvider';
 import { toast } from 'react-toastify';
 import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from '../providers/AuthContext';
 
 const Register = () => {
     const { createNewUser, setUser, updateUserProfile, googleLogin } = useContext(AuthContext);
@@ -52,9 +52,20 @@ const Register = () => {
             });
     };
 
+    // const handleGoogleLogin = () => {
+    //     googleLogin()
+    //     .then((result) => {
+    //         toast.success("Google Login Successful!");
+    //         navigate('/');
+    //     })
+    //     .catch(error => {
+    //         toast.error(error.message);
+    //     })
+    // }
+
     const handleGoogleLogin = () => {
         googleLogin()
-        .then((result) => {
+        .then(() => { // 'result' সরিয়ে দেওয়া হয়েছে
             toast.success("Google Login Successful!");
             navigate('/');
         })
