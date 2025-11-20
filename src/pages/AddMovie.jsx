@@ -90,7 +90,7 @@ const AddMovie = () => {
                     </div>
                 </div>
 
-                {/* Row 3: Release Year & Rating */}
+               
                 <div className="md:flex gap-4 mb-4">
                     <div className="form-control md:w-1/2">
                         <label className="label">
@@ -105,7 +105,7 @@ const AddMovie = () => {
                             <option value="2020">2020</option>
                             <option value="2019">2019</option>
                             <option value="2018">2018</option>
-                            {/* আরও বছর অ্যাড করতে পারেন */}
+                            
                         </select>
                     </div>
                     <div className="form-control md:w-1/2">
@@ -116,7 +116,7 @@ const AddMovie = () => {
                     </div>
                 </div>
 
-                {/* Row 4: Summary */}
+                
                 <div className="mb-4">
                     <div className="form-control w-full">
                         <label className="label">

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { AuthContext } from '../providers/AuthContext'; // সঠিক পাথ থেকে ইমপোর্ট
+import { AuthContext } from '../providers/AuthContext'; 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -39,12 +39,12 @@ const Navbar = () => {
                 </ul>
             </div>
             
-            {/* Navbar End - Conditional Rendering */}
+            
             <div className="navbar-end gap-2">
                 {
                     user && user?.email ? (
                         <div className='flex items-center gap-2'>
-                            {/* ইউজার এর ছবি এবং টুলটিপ */}
+                            
                             <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
                                 <img 
                                     className='w-10 h-10 rounded-full object-cover border border-base-300' 
@@ -53,7 +53,7 @@ const Navbar = () => {
                                     referrerPolicy="no-referrer"
                                 />
                             </div>
-                            {/* লগ আউট বাটন */}
+                           
                             <button onClick={handleLogOut} className="btn btn-neutral btn-sm">Log Out</button>
                         </div>
                     ) : (

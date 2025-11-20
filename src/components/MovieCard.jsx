@@ -12,7 +12,7 @@ const MovieCard = ({ movie }) => {
                     src={poster} 
                     alt={title} 
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" 
-                    onError={(e) => { e.target.src = "https://via.placeholder.com/300x450?text=No+Image" }} // যদি ইমেজ লোড না হয়
+                    onError={(e) => { e.target.src = "https://via.placeholder.com/300x450?text=No+Image" }} 
                 />
             </figure>
             <div className="card-body p-5">

@@ -20,8 +20,8 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
-                toast.success("Login Successful!"); // টোস্ট মেসেজ
-                navigate(location?.state ? location.state : "/"); // রিডাইরেক্ট লজিক
+                toast.success("Login Successful!"); 
+                navigate(location?.state ? location.state : "/"); 
             })
             .catch((err) => {
                 setError({ ...error, login: err.code });

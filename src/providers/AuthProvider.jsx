@@ -9,7 +9,7 @@ import {
     GoogleAuthProvider 
 } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
-import { AuthContext } from './AuthContext'; // নতুন ফাইল থেকে ইমপোর্ট
+import { AuthContext } from './AuthContext'; 
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            setLoading(false); // লোডিং বন্ধ করা খুব জরুরি
+            setLoading(false); 
         });
         return () => {
             unsubscribe();

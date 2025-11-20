@@ -17,7 +17,7 @@ const Register = () => {
         const email = form.get("email");
         const password = form.get("password");
 
-        // 1. Password Validation
+       
         if (password.length < 6) {
             setError({ ...error, password: "Password must be at least 6 characters long" });
             return;
@@ -31,17 +31,17 @@ const Register = () => {
             return;
         }
 
-        // 2. Create User
+        
         createNewUser(email, password)
             .then((result) => {
                 const user = result.user;
                 
-                // 3. Update Profile
+                
                 updateUserProfile({ displayName: name, photoURL: photo })
                     .then(() => {
                         setUser({ ...user, displayName: name, photoURL: photo });
                         toast.success("Registration Successful!");
-                        navigate('/'); // হোম পেজে রিডাইরেক্ট
+                        navigate('/'); 
                     })
                     .catch((err) => {
                         toast.error(err.message);
@@ -52,20 +52,11 @@ const Register = () => {
             });
     };
 
-    // const handleGoogleLogin = () => {
-    //     googleLogin()
-    //     .then((result) => {
-    //         toast.success("Google Login Successful!");
-    //         navigate('/');
-    //     })
-    //     .catch(error => {
-    //         toast.error(error.message);
-    //     })
-    // }
+   
 
     const handleGoogleLogin = () => {
         googleLogin()
-        .then(() => { // 'result' সরিয়ে দেওয়া হয়েছে
+        .then(() => { 
             toast.success("Google Login Successful!");
             navigate('/');
         })
@@ -88,7 +79,7 @@ const Register = () => {
                         <input type="text" name="name" placeholder="Your Name" className="input input-bordered" required />
                     </div>
 
-                    {/* Photo URL Input */}
+                    
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Photo URL</span>
@@ -96,7 +87,7 @@ const Register = () => {
                         <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered" required />
                     </div>
 
-                    {/* Email Input */}
+                   
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
@@ -104,7 +95,7 @@ const Register = () => {
                         <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                     </div>
 
-                    {/* Password Input */}
+                   
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Password</span>
@@ -112,7 +103,7 @@ const Register = () => {
                         <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                     </div>
 
-                    {/* Error Message Display */}
+                    
                     {
                         error.password && (
                             <label className="label text-xs text-red-500">
@@ -126,7 +117,7 @@ const Register = () => {
                     </div>
                 </form>
 
-                {/* Google Login & Redirect */}
+                
                 <div className='px-8 pb-8'>
                     <div className="divider">OR</div>
                     <button onClick={handleGoogleLogin} className='btn btn-outline w-full mb-4'>
