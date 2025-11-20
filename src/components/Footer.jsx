@@ -11,7 +11,7 @@ const Footer = () => {
                     
                     <aside className="flex flex-col items-start">
                         <div className='flex items-center gap-2 text-3xl font-bold text-primary mb-2'>
-                            <FaFilm /> MovieMaster
+                            <FaFilm /> MovieMaster pro
                         </div>
                         <p className="text-base mb-4">
                             Your ultimate destination for movie tracking. Organize, discover, and enjoy.

@@ -1,7 +1,10 @@
+
+
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthContext'; 
 import ThemeToggle from './ThemeToggle';
+import { FaFilm } from 'react-icons/fa';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -14,11 +17,18 @@ const Navbar = () => {
             .catch(error => console.error(error));
     }
 
+    
+    const getLinkClass = ({ isActive }) => {
+        return isActive 
+            ? "font-bold text-primary border-b-2 border-primary" 
+            : "font-bold hover:text-primary"; 
+    };
+
     const links = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/movies">All Movies</NavLink></li>
-        <li><NavLink to="/add-movie">Add Movie</NavLink></li>
-        <li><NavLink to="/my-collection">My Collection</NavLink></li>
+        <li><NavLink to="/" className={getLinkClass}>Home</NavLink></li>
+        <li><NavLink to="/movies" className={getLinkClass}>All Movies</NavLink></li>
+        <li><NavLink to="/add-movie" className={getLinkClass}>Add Movie</NavLink></li>
+        <li><NavLink to="/my-collection" className={getLinkClass}>My Collection</NavLink></li>
     </>
 
     return (
@@ -32,10 +42,10 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost text-xl font-bold text-primary">MovieMaster Pro</Link>
+                <Link to="/" className="btn btn-ghost text-xl font-bold text-primary"> <FaFilm /> MovieMaster Pro</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 gap-2">
+                <ul className="menu menu-horizontal px-1 gap-6"> 
                     {links}
                 </ul>
             </div>
