@@ -1,15 +1,13 @@
-
-
 import React, { useContext } from 'react';
-import { useLoaderData, Link, useNavigate } from 'react-router-dom'; 
+import { useLoaderData, Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthContext';
-import { FaStar, FaTrash, FaEdit, FaCalendarAlt, FaClock, FaGlobe } from "react-icons/fa";
+import { FaStar, FaTrash, FaEdit, FaCalendarAlt, FaClock, FaGlobe, FaHeart } from "react-icons/fa"; // FaHeart আনা হলো
 import { toast } from 'react-toastify';
 
 const MovieDetails = () => {
     const movie = useLoaderData();
     const { user } = useContext(AuthContext);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const { _id, poster, title, genre, duration, releaseYear, rating, summary, email } = movie;
 
@@ -22,13 +20,44 @@ const MovieDetails = () => {
         .then(data => {
             if (data.deletedCount > 0) {
                 toast.success("Movie Deleted Successfully!");
-                navigate('/movies'); 
+                navigate('/movies');
             }
         })
         .catch(error => {
-    console.error(error); 
-    toast.error("Failed to delete movie");
-});
+            console.error(error);
+            toast.error("Failed to delete movie");
+        });
+    }
+
+    
+    const handleAddToWatchlist = () => {
+        if(!user || !user.email){
+            toast.error("Please login to add to watchlist");
+            return;
+        }
+
+        const watchListItem = {
+            movieId: _id,
+            title,
+            poster,
+            genre,
+            rating,
+            userEmail: user.email
+        }
+
+        fetch('http://localhost:5000/watchlist', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(watchListItem)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.insertedId){
+                toast.success("Added to Watchlist ❤️");
+            }
+        })
     }
 
     return (
@@ -57,18 +86,26 @@ const MovieDetails = () => {
                     </div>
 
                     
-                    <div className="card-actions justify-end mt-auto">
+                    <div className="card-actions justify-end mt-auto items-center">
+                        
+                        
+                        { user && (
+                            <button onClick={handleAddToWatchlist} className="btn btn-outline btn-secondary">
+                                <FaHeart /> Add to Watchlist
+                            </button>
+                        )}
+
+                       
                         {
                             user && user.email === email && (
-                                <div className='flex gap-3'>
+                                <div className='flex gap-3 ml-2'>
                                     <Link to={`/movies/update/${_id}`} className="btn btn-primary text-white">
-                                        <FaEdit /> Update Movie
+                                        <FaEdit /> Update
                                     </Link>
-                                    
                                     <button 
                                         onClick={() => document.getElementById('delete_modal').showModal()} 
                                         className="btn btn-error text-white">
-                                        <FaTrash /> Delete Movie
+                                        <FaTrash /> Delete
                                     </button>
                                 </div>
                             )
@@ -76,9 +113,8 @@ const MovieDetails = () => {
                     </div>
                 </div>
             </div>
-
-           
-            <dialog id="delete_modal" className="modal">
+             
+             <dialog id="delete_modal" className="modal">
                 <div className="modal-box">
                     <h3 className="font-bold text-lg text-red-500">Are you sure?</h3>
                     <p className="py-4">Do you really want to delete <span className='font-bold'>{title}</span>? This process cannot be undone.</p>
@@ -86,7 +122,6 @@ const MovieDetails = () => {
                         <form method="dialog">
                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                             <button className="btn btn-neutral mr-2">Cancel</button>
-                            
                             <button onClick={handleDelete} className="btn btn-error text-white">Yes, Delete</button>
                         </form>
                     </div>
