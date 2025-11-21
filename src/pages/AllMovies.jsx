@@ -7,7 +7,7 @@ const AllMovies = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/movies')
+        fetch('https://movie-master-ser.vercel.app/movies')
             .then(res => res.json())
             .then(data => {
                 setMovies(data);

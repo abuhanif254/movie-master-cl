@@ -9,7 +9,7 @@ const WatchList = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/watchlist?email=${user.email}`)
+            fetch(`https://movie-master-ser.vercel.app/watchlist?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setWatchlist(data);

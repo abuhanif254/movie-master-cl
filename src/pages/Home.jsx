@@ -22,7 +22,7 @@ const Home = () => {
         });
 
        
-        fetch('http://localhost:5000/movies')
+        fetch('https://movie-master-ser.vercel.app/movies')
             .then(res => res.json())
             .then(data => {
                 setMovies(data);

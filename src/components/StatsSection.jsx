@@ -6,7 +6,7 @@ const StatsSection = () => {
     const [stats, setStats] = useState({ movieCount: 0, userCount: 0 });
 
     useEffect(() => {
-        fetch('http://localhost:5000/stats')
+        fetch('https://movie-master-ser.vercel.app/stats')
             .then(res => res.json())
             .then(data => {
                 console.log("Stats Data from Server:", data); // কনসোলে চেক করার জন্য

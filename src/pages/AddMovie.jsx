@@ -29,7 +29,7 @@ const AddMovie = () => {
         }
 
         
-        fetch('http://localhost:5000/movies', {
+        fetch('https://movie-master-ser.vercel.app/movies', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

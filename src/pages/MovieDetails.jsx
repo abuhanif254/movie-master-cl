@@ -13,7 +13,7 @@ const MovieDetails = () => {
 
     
     const handleDelete = () => {
-        fetch(`http://localhost:5000/movies/${_id}`, {
+        fetch(`https://movie-master-ser.vercel.app/movies/${_id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
@@ -45,7 +45,7 @@ const MovieDetails = () => {
             userEmail: user.email
         }
 
-        fetch('http://localhost:5000/watchlist', {
+        fetch('https://movie-master-ser.vercel.app/watchlist', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

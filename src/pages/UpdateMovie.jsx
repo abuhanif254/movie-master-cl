@@ -23,7 +23,7 @@ const UpdateMovie = () => {
         }
 
         
-        fetch(`http://localhost:5000/movies/${_id}`, {
+        fetch(`https://movie-master-ser.vercel.app/movies/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

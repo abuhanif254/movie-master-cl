@@ -31,7 +31,7 @@ const router = createBrowserRouter([
             {
                 path: "/movies/:id",
                 element: <MovieDetails />,
-                loader: ({params}) => fetch(`http://localhost:5000/movies/${params.id}`)
+                loader: ({params}) => fetch(`https://movie-master-ser.vercel.app/movies/${params.id}`)
             },
 
             {
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
             {
                 path: "/movies/update/:id",
                 element: <PrivateRoute><UpdateMovie /></PrivateRoute>, 
-                loader: ({params}) => fetch(`http://localhost:5000/movies/${params.id}`)
+                loader: ({params}) => fetch(`https://movie-master-ser.vercel.app/movies/${params.id}`)
             },
 
             {
