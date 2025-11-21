@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useLoaderData, Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthContext';
-import { FaStar, FaTrash, FaEdit, FaCalendarAlt, FaClock, FaGlobe, FaHeart } from "react-icons/fa"; // FaHeart আনা হলো
+import { FaStar, FaTrash, FaEdit, FaCalendarAlt, FaClock, FaGlobe, FaHeart } from "react-icons/fa"; 
 import { toast } from 'react-toastify';
 
 const MovieDetails = () => {

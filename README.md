@@ -1,16 +1,41 @@
-# React + Vite
+ MovieMaster Pro - Your Ultimate Movie Companion
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**MovieMaster Pro** is a comprehensive movie management system designed for film enthusiasts. Users can browse, add, update, and delete movies, manage their personal collections, creating a personalized watchlist, and enjoy a seamless experience with a modern, responsive UI.
 
-Currently, two official plugins are available:
+ 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ Key Features
 
-## React Compiler
+*User Authentication:** Secure login and registration system using Firebase (Email/Password & Google Social Login).
+* Responsive Design:** Fully responsive layout optimized for Mobile, Tablet, and Desktop devices using Tailwind CSS & DaisyUI.
+* CRUD Operations:** Users can Add, View, Update, and Delete movies. (Update/Delete restricted to the content owner).
+* Dynamic Theme Toggle:** Features a real-time Light and Dark mode switcher for better user experience.
+* Advanced Filtering & Search:** Browse movies by Genre instantly and view specific collections filtered by user email.
+* Watchlist Feature:** Users can add their favorite movies to a personal Watchlist for future viewing.
+* Interactive UI:** Includes a Hero Slider (SwiperJS), Typewriter effect, and smooth scrolling animations (AOS).
+* Private Routes:** Secure routes for 'Add Movie', 'My Collection', and 'Watchlist' that require login.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+ Technologies Used
 
-## Expanding the ESLint configuration
+* Frontend:** React.js, Vite
+* Router:** React Router DOM
+* Styling:** Tailwind CSS, DaisyUI
+* Authentication:** Firebase Auth
+* Animations:** AOS (Animate On Scroll), React Simple Typewriter
+* Components:** SwiperJS (Slider), React Icons, React Tooltip
+* Notifications:** React Toastify
+* State Management:** React Context API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ NPM Packages Used
+
+* `react-router-dom`
+* `firebase`
+* `react-toastify`
+* `swiper`
+* `aos`
+* `react-simple-typewriter`
+* `react-icons`
+* `sweetalert2`
+* `localforage`, `match-sorter`, `sort-by`
+
+ 

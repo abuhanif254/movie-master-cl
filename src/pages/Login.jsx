@@ -46,24 +46,40 @@ const Login = () => {
         <div className="min-h-screen flex justify-center items-center bg-base-200 py-10">
             <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl">
                 <form onSubmit={handleLogin} className="card-body">
-                    <h2 className='text-2xl font-bold text-center mb-4'>Login to MovieMaster</h2>
+                    <h2 className='text-3xl font-bold text-center mb-6 text-primary'>Login</h2>
+                    
                     
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text font-semibold">Email Address</span>
                         </label>
-                        <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="Enter your email" 
+                            className="input input-bordered w-full" 
+                            required 
+                        />
                     </div>
-                    <div className="form-control">
+
+                    
+                    <div className="form-control mt-4">
                         <label className="label">
-                            <span className="label-text">Password</span>
+                            <span className="label-text font-semibold">Password</span>
                         </label>
-                        <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                        <input 
+                            type="password" 
+                            name="password" 
+                            placeholder="Enter your password" 
+                            className="input input-bordered w-full" 
+                            required 
+                        />
                         <label className="label">
-                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                            <a href="#" className="label-text-alt link link-hover text-gray-500">Forgot password?</a>
                         </label>
                     </div>
 
+                    
                     {
                         error.login && (
                             <label className="label text-sm text-red-600">
@@ -72,17 +88,21 @@ const Login = () => {
                         )
                     }
 
+                    
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">Login</button>
+                        <button className="btn btn-primary font-bold text-white text-lg">Login</button>
                     </div>
                 </form>
 
+               
                 <div className='px-8 pb-8'>
-                    <div className="divider">OR</div>
-                    <button onClick={handleGoogleLogin} className='btn btn-outline w-full mb-4'>
-                        <FaGoogle /> Continue with Google
+                    <div className="divider text-gray-500">OR</div>
+                    <button onClick={handleGoogleLogin} className='btn btn-outline w-full mb-4 flex items-center gap-2'>
+                        <FaGoogle className='text-red-500' /> Continue with Google
                     </button>
-                    <p className='text-center'>Don't have an account? <Link className='text-red-500 font-bold' to="/register">Register</Link></p>
+                    <p className='text-center text-sm'>
+                        Don't have an account? <Link className='text-primary font-bold link link-hover' to="/register">Register</Link>
+                    </p>
                 </div>
             </div>
         </div>

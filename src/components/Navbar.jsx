@@ -29,6 +29,7 @@ const Navbar = () => {
         <li><NavLink to="/movies" className={getLinkClass}>All Movies</NavLink></li>
         <li><NavLink to="/add-movie" className={getLinkClass}>Add Movie</NavLink></li>
         <li><NavLink to="/my-collection" className={getLinkClass}>My Collection</NavLink></li>
+        <li><NavLink to="/watchlist" className={getLinkClass}>Watchlist</NavLink></li>
     </>
 
     return (

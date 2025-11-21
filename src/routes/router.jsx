@@ -12,6 +12,7 @@ import ErrorPage from "../pages/ErrorPage";
 import PrivateRoute from "./PrivateRoute";  
 import MovieDetails from "../pages/MovieDetails";
 import UpdateMovie from "../pages/UpdateMovie";
+import WatchList from "../pages/WatchList";
 
 const router = createBrowserRouter([
     {
@@ -54,6 +55,12 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><UpdateMovie /></PrivateRoute>, 
                 loader: ({params}) => fetch(`http://localhost:5000/movies/${params.id}`)
             },
+
+            {
+    path: "/watchlist",
+    element: <PrivateRoute><WatchList /></PrivateRoute>,
+},
+
         ],
     },
 ]);
