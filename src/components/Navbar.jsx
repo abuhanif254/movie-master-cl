@@ -42,7 +42,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost text-xl font-bold text-primary"> <FaFilm /> MovieMaster Pro</Link>
+                <Link to="/" className="btn btn-ghost text-3xl font-bold text-primary"> <FaFilm /> MovieMaster Pro</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-6"> 
