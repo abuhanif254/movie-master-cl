@@ -9,8 +9,8 @@ const MyCollection = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        
-        fetch(`https://movie-master-ser.vercel.app/movies?email=${user.email}`)
+
+        fetch(`http://localhost:5000/movies?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setMovies(data);
@@ -33,7 +33,7 @@ const MyCollection = () => {
                 movies.length === 0 ? (
                     <div className='text-center py-20'>
                         <p className='text-2xl font-semibold mb-4'>You haven't added any movies yet!</p>
-                        
+
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

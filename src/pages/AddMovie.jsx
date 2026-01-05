@@ -28,21 +28,21 @@ const AddMovie = () => {
             email: user.email
         }
 
-        
-        fetch('https://movie-master-ser.vercel.app/movies', {
+
+        fetch('http://localhost:5000/movies', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(newMovie)
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.insertedId){
-                toast.success('Movie Added Successfully!');
-                form.reset();
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    toast.success('Movie Added Successfully!');
+                    form.reset();
+                }
+            })
     }
 
     return (
@@ -50,11 +50,11 @@ const AddMovie = () => {
             <div className="card bg-base-100 w-full max-w-3xl shadow-2xl">
                 <form onSubmit={handleAddMovie} className="card-body">
                     <h2 className="text-3xl font-bold text-center mb-6 text-primary">Add a New Movie</h2>
-                    
-                    
+
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        
-                        
+
+
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-semibold">Movie Poster URL</span>
@@ -62,7 +62,7 @@ const AddMovie = () => {
                             <input type="text" name="poster" placeholder="https://example.com/image.jpg" className="input input-bordered w-full" required />
                         </div>
 
-                        
+
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-semibold">Movie Title</span>
@@ -70,7 +70,7 @@ const AddMovie = () => {
                             <input type="text" name="title" placeholder="Inception" className="input input-bordered w-full" required />
                         </div>
 
-                        
+
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-semibold">Genre</span>
@@ -86,7 +86,7 @@ const AddMovie = () => {
                             </select>
                         </div>
 
-                       
+
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-semibold">Duration (min)</span>
@@ -94,7 +94,7 @@ const AddMovie = () => {
                             <input type="number" name="duration" placeholder="120" className="input input-bordered w-full" required />
                         </div>
 
-                        
+
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-semibold">Release Year</span>
@@ -111,7 +111,7 @@ const AddMovie = () => {
                             </select>
                         </div>
 
-                       
+
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-semibold">Rating (0-10)</span>
@@ -120,7 +120,7 @@ const AddMovie = () => {
                         </div>
                     </div>
 
-                    
+
                     <div className="form-control mt-4">
                         <label className="label">
                             <span className="label-text font-semibold">Summary</span>
@@ -128,7 +128,7 @@ const AddMovie = () => {
                         <textarea name="summary" className="textarea textarea-bordered h-32 w-full" placeholder="Short summary of the movie..." required></textarea>
                     </div>
 
-                    
+
                     <div className="form-control mt-6">
                         <input type="submit" value="Add Movie" className="btn btn-primary w-full font-bold text-white text-lg" />
                     </div>

@@ -9,7 +9,7 @@ const WatchList = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`https://movie-master-ser.vercel.app/watchlist?email=${user.email}`)
+            fetch(`http://localhost:5000/watchlist?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setWatchlist(data);
@@ -23,7 +23,7 @@ const WatchList = () => {
     return (
         <div className="overflow-x-auto my-10 container mx-auto px-4 min-h-screen">
             <h2 className="text-3xl font-bold text-center mb-8 text-primary">My Watchlist</h2>
-            
+
             {watchlist.length === 0 ? (
                 <p className="text-center text-gray-500 text-xl">Your watchlist is empty.</p>
             ) : (

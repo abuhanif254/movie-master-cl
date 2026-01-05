@@ -3,9 +3,9 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const UpdateMovie = () => {
-    const movie = useLoaderData(); 
+    const movie = useLoaderData();
     const navigate = useNavigate();
-    
+
     const { _id, poster, title, genre, duration, releaseYear, rating, summary } = movie;
 
     const handleUpdateMovie = event => {
@@ -22,34 +22,34 @@ const UpdateMovie = () => {
             summary: form.summary.value
         }
 
-        
-        fetch(`https://movie-master-ser.vercel.app/movies/${_id}`, {
+
+        fetch(`http://localhost:5000/movies/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(updatedMovie)
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.modifiedCount > 0){
-                toast.success('Movie Updated Successfully!');
-                navigate(`/movies/${_id}`); 
-            } else {
-                toast.info('No changes made.');
-            }
-        })
-        .catch(error => {
-            console.error(error);
-            toast.error('Error updating movie');
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Movie Updated Successfully!');
+                    navigate(`/movies/${_id}`);
+                } else {
+                    toast.info('No changes made.');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error('Error updating movie');
+            })
     }
 
     return (
         <div className="p-4 max-w-3xl mx-auto bg-base-200 rounded-xl shadow-lg my-10">
             <h2 className="text-3xl font-bold text-center mb-8 text-primary">Update Movie: {title}</h2>
             <form onSubmit={handleUpdateMovie}>
-                
+
                 <div className="md:flex gap-4 mb-4">
                     <div className="form-control md:w-1/2">
                         <label className="label"><span className="label-text font-semibold">Movie Poster URL</span></label>
@@ -61,7 +61,7 @@ const UpdateMovie = () => {
                     </div>
                 </div>
 
-                
+
                 <div className="md:flex gap-4 mb-4">
                     <div className="form-control md:w-1/2">
                         <label className="label"><span className="label-text font-semibold">Genre</span></label>
@@ -81,7 +81,7 @@ const UpdateMovie = () => {
                     </div>
                 </div>
 
-               
+
                 <div className="md:flex gap-4 mb-4">
                     <div className="form-control md:w-1/2">
                         <label className="label"><span className="label-text font-semibold">Release Year</span></label>
@@ -102,7 +102,7 @@ const UpdateMovie = () => {
                     </div>
                 </div>
 
-                
+
                 <div className="mb-4">
                     <div className="form-control w-full">
                         <label className="label"><span className="label-text font-semibold">Summary</span></label>
