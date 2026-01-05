@@ -27,7 +27,11 @@ const Home = () => {
             once: true,
         });
 
-        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/movies`)
+        // DEBUGGING: If VITE_API_URL is missing, this will fail with a clear deviation from "localhost"
+        const apiUrl = import.meta.env.VITE_API_URL;
+        console.log("Home Page API URL:", apiUrl);
+
+        fetch(`${apiUrl || 'https://MISSING_ENV_VAR'}/movies`)
             .then(res => res.json())
             .then(data => {
                 setMovies(data);
