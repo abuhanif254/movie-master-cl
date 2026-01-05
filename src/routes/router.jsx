@@ -36,7 +36,7 @@ const router = createBrowserRouter([
             {
                 path: "/movies/:id",
                 element: <MovieDetails />,
-                loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/movies/${params.id}`)
             },
 
             {
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
             {
                 path: "/movies/update/:id",
                 element: <PrivateRoute><UpdateMovie /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/movies/${params.id}`)
             },
 
             {

@@ -23,7 +23,7 @@ const UpdateMovie = () => {
         }
 
 
-        fetch(`http://localhost:5000/movies/${_id}`, {
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/movies/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

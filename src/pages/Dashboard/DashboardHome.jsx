@@ -13,8 +13,8 @@ const DashboardHome = () => {
         const fetchData = async () => {
             try {
                 const [statsRes, moviesRes] = await Promise.all([
-                    fetch('http://localhost:5000/stats'),
-                    fetch('http://localhost:5000/movies')
+                    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/stats`),
+                    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/movies`)
                 ]);
                 const statsData = await statsRes.json();
                 const moviesData = await moviesRes.json();

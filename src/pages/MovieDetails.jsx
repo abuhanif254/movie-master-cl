@@ -16,7 +16,7 @@ const MovieDetails = () => {
 
     // Fetch related movies
     useEffect(() => {
-        fetch('http://localhost:5000/movies')
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/movies`)
             .then(res => res.json())
             .then(data => {
                 const related = data.filter(m => m.genre === genre && m._id !== _id).slice(0, 4);
@@ -36,7 +36,7 @@ const MovieDetails = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/movies/${_id}`, {
+                fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/movies/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -78,7 +78,7 @@ const MovieDetails = () => {
             userEmail: user.email
         }
 
-        fetch('http://localhost:5000/watchlist', {
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/watchlist`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

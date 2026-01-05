@@ -10,7 +10,7 @@ const MyCollection = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/movies?email=${user.email}`)
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/movies?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setMovies(data);

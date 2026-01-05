@@ -27,7 +27,7 @@ const Home = () => {
             once: true,
         });
 
-        fetch('http://localhost:5000/movies')
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/movies`)
             .then(res => res.json())
             .then(data => {
                 setMovies(data);

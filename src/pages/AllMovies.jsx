@@ -16,7 +16,7 @@ const AllMovies = () => {
     const genres = ["Action", "Comedy", "Drama", "Horror", "Sci-Fi", "Thriller", "Adventure", "Fantasy", "Animation"];
 
     useEffect(() => {
-        fetch('http://localhost:5000/movies')
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/movies`)
             .then(res => res.json())
             .then(data => {
                 setMovies(data);

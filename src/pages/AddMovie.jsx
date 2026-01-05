@@ -29,7 +29,7 @@ const AddMovie = () => {
         }
 
 
-        fetch('http://localhost:5000/movies', {
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/movies`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
